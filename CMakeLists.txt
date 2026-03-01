@@ -20,6 +20,16 @@ add_executable(flacParser WIN32 ${SOURCES})
 target_include_directories(flacParser PRIVATE include)
 target_link_libraries(flacParser PRIVATE ${LIBS})
 
+# Tests
+set(TEST_SOURCES
+    tests/test_main.cpp
+    src/Utils.cpp
+    src/CueParser.cpp
+)
+add_executable(flacParserTests ${TEST_SOURCES})
+target_include_directories(flacParserTests PRIVATE include)
+target_link_libraries(flacParserTests PRIVATE comdlg32 shlwapi user32)
+
 # Copy the executable to the root after building
 add_custom_command(TARGET flacParser POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:flacParser> ${CMAKE_SOURCE_DIR}/flacParser.exe

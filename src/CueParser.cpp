@@ -32,11 +32,15 @@ std::vector<Album> CueParser::ParseRecursive(const std::wstring& rootPath) {
 }
 
 Album CueParser::ParseSingleCue(const fs::path& path) {
+    std::wstring content = Utils::ReadFileAsWide(path);
+    return ParseString(content, path);
+}
+
+Album CueParser::ParseString(const std::wstring& content, const fs::path& path) {
     Album album;
     album.cuePath = path.wstring();
     album.srcDir = path.parent_path();
 
-    std::wstring content = Utils::ReadFileAsWide(path);
     if (content.empty()) return album;
 
     std::wstringstream ss(content);

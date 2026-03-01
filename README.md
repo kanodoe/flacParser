@@ -4,6 +4,14 @@
 
 A native Windows desktop application (C++) designed to automate the splitting of large FLAC audio files using their associated `.cue` sheet.
 
+## Downloads
+
+You can download the precompiled standalone executable from the `binary/` folder in this repository.
+
+- [**Download flacParser.exe**](./binary/flacParser.exe)
+
+*Note: Make sure to have `ffmpeg.exe` available as per the Requirements section.*
+
 ## Main Features
 
 - **Intuitive Graphical Interface**: Source and destination folder selection using native Windows dialogs.
@@ -31,29 +39,16 @@ A native Windows desktop application (C++) designed to automate the splitting of
 6. Use **Dry Run** to simulate the process without generating real files (planned output will be shown in the log).
 7. Upon successful completion, a hidden `.album_done` file is created in the destination folder to prevent re-processing.
 
-## Changelog
+## Development & Testing
 
-### v1.4.0 (Current)
-- **Robustness**: Fixed processing failures for long filenames by implementing intelligent truncation (max 200 chars).
-- **Format Support**: Added explicit `-f flac` to FFmpeg commands to ensure output format consistency.
-- **Error Handling**: Improved error reporting when FFmpeg fails due to complex metadata.
+This project includes a suite of unit tests to ensure the reliability of the core logic (`Utils`, `CueParser`).
 
-### v1.3.0
-- **Manual FFmpeg Selection**: Added UI controls to browse and select `ffmpeg.exe` manually.
-- **Dynamic Layout**: Improved window resizing logic to keep all controls visible.
-- **Advanced Diagnostics**: Log now shows the exact FFmpeg command executed on failure.
-
-### v1.2.0
-- **FFmpeg Localization**: Improved search logic using `SearchPathW` and PATH environment variable.
-- **Locale Independence**: Forced period (`.`) as decimal separator for FFmpeg parameters, fixing syntax errors on systems with non-English locales (e.g., Spanish).
-
-### v1.1.0
-- **Unicode & Long Paths**: Full migration to Wide-string API (`\\?\` prefix) to handle deep folder structures and special characters.
-- **Metadata Fixes**: Improved CUE parsing to correctly handle UTF-8/ANSI encodings and escape complex titles.
-- **Incremental Logic**: Implementation of `.album_done` tracking.
-
-### v1.0.0
-- Initial release with basic GUI, multi-threading, and CUE/FLAC splitting logic.
+### Running Tests
+To compile and run the tests, use CMake:
+```powershell
+cmake --build cmake-build-debug --target flacParserTests
+.\cmake-build-debug\flacParserTests.exe
+```
 
 ## Credits
 
