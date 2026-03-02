@@ -1,6 +1,11 @@
 ## Changelog
 
-### v1.5.0 (Current)
+### v1.5.1 (Current)
+- **Portabilidad**: Ahora el ejecutable se enlaza estáticamente con las librerías de MinGW (`libwinpthread`, `libgcc`, `libstdc++`), lo que permite ejecutarlo en otros computadores sin necesidad de instalar DLLs adicionales.
+- **Distribución**: Binario actualizado en la carpeta `binary/` para su descarga directa.
+- **Seguridad**: Se ha incluido un checksum SHA256 para verificar la integridad del ejecutable.
+
+### v1.5.0
 - **Testing Suite**: Added unit tests for `Utils` and `CueParser` to ensure code quality and robustness.
 - **Refactoring**: Improved code structure to facilitate automated testing of CUE parsing logic.
 - **Documentation**: Updated README with binary download links and testing instructions.

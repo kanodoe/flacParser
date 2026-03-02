@@ -8,7 +8,12 @@ A native Windows desktop application (C++) designed to automate the splitting of
 
 You can download the precompiled standalone executable from the `binary/` folder in this repository.
 
-- [**Download flacParser.exe**](./binary/flacParser.exe)
+- [**Download flacParser.exe**](./binary/flacParser.exe) ([SHA256 Checksum](./binary/flacParser.exe.sha256))
+
+### Verification (v1.5.1)
+To ensure the integrity of the downloaded file, you can verify its SHA256 checksum:
+- **Checksum**: `fbb92282cce7dc31c96989f5a34137ba66fbbd9ba7ee3829161a3df7ee3d98bc`
+- **Verification Command (Windows)**: `certutil -hashfile flacParser.exe SHA256`
 
 *Note: Make sure to have `ffmpeg.exe` available as per the Requirements section.*
 

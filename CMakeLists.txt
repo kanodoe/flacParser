@@ -7,6 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find necessary Windows libraries
 set(LIBS comdlg32 shlwapi shell32 user32 gdi32 comctl32)
 
+# Ensure static linking for MinGW to avoid missing DLL errors (libwinpthread, libgcc, libstdc++)
+if(MINGW)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -static-libgcc -static-libstdc++")
+endif()
+
 set(SOURCES
     main.cpp
     src/Utils.cpp
